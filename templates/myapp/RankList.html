@@ -1,0 +1,33 @@
+{% extends "base.html" %}sdgsweb.thinkchild.repl.co
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<div class="container">
+    <h1>排行榜</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>名次</th>
+                <th>名稱</th>
+                <th>國家能力</th>
+                <th>貢獻值</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{ user.cp }}</td>
+                    <td>{{ user.cv }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

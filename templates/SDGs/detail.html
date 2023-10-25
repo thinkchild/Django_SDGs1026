@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}顯示SDGs資料{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+ <div class="jumbotron">
+ <div class="container">
+ <h1 class="display-3">{{ sdgs.title }}</h1>
+ <div class="lead">{{ sdgs.description }}</div>
+ </div>
+ </div>
+ <a href="/SDGs/">Back</a>
+{% endblock %}

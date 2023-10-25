@@ -1,0 +1,5 @@
+django
+django-allauth
+django-import-export
+django-widget-tweaks
+django-simple-captcha

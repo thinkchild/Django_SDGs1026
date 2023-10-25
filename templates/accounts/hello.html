@@ -1,0 +1,348 @@
+{% extends "base.html" %}sdgsweb.thinkchild.repl.co
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<br>
+<br>
+<br>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.101.0">
+  <title>Blog Template · Bootstrap v4.6</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/blog/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #F0FFF0, #79FF79);
+      background-attachment: fixed;
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="blog.css" rel="stylesheet">
+  <style>
+    .container {
+      display: flex;
+      /* 使用 Flexbox 布局 */
+    }
+
+    .item {
+      margin: 10px;
+      /* 设置项目之间的间距 */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>-->
+        <!-- </a> -->
+      </div>
+  </div>
+  </header>
+
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <img src="{% static '/images/sdgs03.jpg' %}" width="100%" />
+  </div>
+  <div class="container">
+    <div class="item">
+      <div id="contentContainer"></div>
+      <script>
+        fetch('/user/')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('contentContainer').innerHTML = data;
+
+            // 获取用户是否已经登录
+            var userIsAuthenticated = {% if user.is_authenticated %}true{% else %}false{% endif %};
+
+        // 根据用户登录状态来显示或隐藏内容
+        if (userIsAuthenticated) {
+          // 用户已登录，显示内容
+          document.getElementById('contentContainer').style.display = 'block';
+        } else {
+          // 用户未登录，隐藏内容
+          document.getElementById('contentContainer').style.display = 'none';
+        }
+         });
+      </script>
+
+    </div>
+
+
+    <div class="item">
+      <div class="card" style="width: 45rem;">
+        <!-- <div class="card mb-5" style="max-width: 100%; margin: 0 auto;">-->
+        <div class="container">
+          <p class="three">排行 </p>
+          <!-- <h3>排</h3> -->
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>名次</th>
+                <th>名稱</th>
+                <th>國家能力</th>
+                <th>貢獻值</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users|slice:":5" %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.user.username }}</td>
+                <td>{{ user.cp }}</td>
+                <td>{{ user.cv }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static bg-white">
+          <strong class="d-inline-block mb-2 text-primary">Game</strong>
+          <h2 class="mb-0">末日計畫</h2>
+          <div class="mb-1 text-muted">SDG</div>
+          {% if user.is_authenticated %}
+          <p class="card-text mb-auto">歡迎加入！請按下方按鈕開始答題</p>
+          <a href="{% url 'quiz_already_answered' question_id=1 %}" id="quiz-button" class="stretched-link">開始答題</a>
+          <!-- <a href="{% url 'take_quiz' question_id=1 %}" id="quiz-button" class="stretched-link">開始答題</a> -->
+          {% else %}
+          <p class="card-text mb-auto">請先登入您的世界</p>
+          <a href="/login/" class="stretched-link">前往登入</a>
+        </div>
+        <!-- {% endif %} -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            var loginButton = document.getElementById("login-button");
+            var quizButton = document.getElementById("quiz-button");
+
+            // 檢查用戶是否已經登入
+            if ({{ user.is_authenticated | lower }} === "true") {
+              // 如果已登入，隱藏登入按鈕，顯示quizapp按鈕
+              loginButton.style.display = "none";
+              quizButton.style.display = "block";
+            } else {
+              // 如果未登入，顯示登入按鈕，隱藏quizapp按鈕
+              loginButton.style.display = "block";
+              quizButton.style.display = "none";
+            }
+          });
+        </script>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img src="{% static '/images/save.jpg' %}" width=400px height=235px>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static '/images/sd1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd2.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd4.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd5.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd6.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd7.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd8.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd9.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd10.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd11.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd12.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd13.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd14.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd15.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd16.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static '/images/sd17.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-4 mb-4 font-italic border-bottom">事件公告</h3>
+        <div class="contentbox">
+          <table class="table table-light table-striped">
+            <tr>
+              <thead class="table-dark">
+                <th align="left">分類</th>
+                <th align="left">標題</th>
+                <th align="left">時間</th>
+                <th align="left">點閱</th>
+              </thead>
+            </tr>
+            {% for unit in newsunits %}
+            <tr class="alt">
+              <td>
+                <div class="typeblock">【{{ unit.catego }}】</div>
+              </td>
+              <td><a href="newsdetail/{{unit.id}}/">{{ unit.title }}</a></td>
+              <td>{{ unit.pubtime }}</td>
+              <td>{{ unit.press }}</td>
+            </tr>
+            {% empty %}
+            <div class="status warning">
+              <p><img src="{% static 'firstproj/static/images/icon_warning.png' %}" alt="Warning" /><span>注意</span>
+                目前新聞資料庫中沒有任何資料！</p>
+            </div>
+            {% endfor %}
+          </table>
+          <div class="topfunction">
+            {% if currentpage < totpage %} <a href="/newsindex/" align="right">查看更多</a>
+              {% endif %}
+          </div>
+        </div>
+        <div class="blog-post">
+          <h2 class="blog-post-title">討論專區</h2>
+          <p class="blog-post-meta"><a href="showpost">查看所有留言</a></p>
+          <table class="table table-light table-striped">
+            <thead>
+              <tr>
+
+                <th scope="col">主旨</th>
+                <th scope="col">姓名</th>
+                <th scope="col">版主回應</th>
+                <th scope="col">時間</th>
+              </tr>
+            </thead>
+            {% for unit in boardunits %}
+            <tbody>
+              <tr>
+                <th scope="row"><a href="showpost/"># {{unit.btitle}}</th>
+                <td>{{unit.bname}}</td>
+                <td>{{unit.bresponse}}</td>
+                <td>{{unit.btime}}</td>
+                {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="font-italic">活動提醒：</h4>
+          <p class="mb-0">末日倒數 <font color="#FF0000">30</font>
+            <font color="#000000">天，已解決</font>
+            <font color="#FF0000">0</font>
+            <font color="#000000">件事</font>
+          </p>
+        </div>
+
+        <a href="https://www.un.org/zh/">
+          <img src="{% static '/images/UN.jpg' %}" alt="聯合國網站" width="335px" height="150px">
+        </a>
+        <div class="p-4">
+          <h4 class="font-italic"><strong>關於我們</strong></h4>
+          <ol class="list-unstyled">
+            <li><a href="https://github.com/thinkchild">新科力教GitHub</a></li>
+            <li><a href="https://www.notion.so/ThinkChild-TC-95c0e80f6f1b4e0584a4c1a9a1190188">新科力教團隊介紹</a></li>
+          </ol>
+        </div>
+
+      </aside><!-- /.blog-sidebar -->
+    </div><!-- /.row -->
+  </main><!-- /.container -->
+
+  <footer class="blog-footer">
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+</body>
+
+</html>
+
+{% endblock %}

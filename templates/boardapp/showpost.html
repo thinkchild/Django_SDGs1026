@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}網站留言版{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+	<table width="100%">
+    
+    <head>討論專區</head>
+		
+  	{% for unit in boardunits %}
+	<tr>
+	  <td>
+		  <table width="545" border="0" align="center" cellpadding="0" cellspacing="0" background="{% static 'images/bgbaord.png' %}">
+		  	<tr>
+			  <td>
+				<div class="floorDiv">
+					{% if unit.bgender == "m" %}
+						<img src="{% static 'images/boy.png' %}" width="72" height="63" />
+					{% else %}
+						<img src="{% static 'images/girl.png' %}" width="72" height="63" />
+					{% endif %}
+				</div>
+				<div class="contentDiv">
+				  <p class="title"><strong>{{unit.btitle}}</strong></p>
+				  <p></p>
+				  <p>{{unit.bcontent}}</p>
+				  {% if unit.bresponse != "" %}
+					<div class="responseDiv">
+					  <p><strong>版主回應</strong>：{{unit.bresponse}}</p>
+					</div>
+				  {% endif %}
+				  <p class="editor"><img src="{% static 'images/user.png' %}" width="16" height="16" align="absmiddle">{{unit.bname}}&nbsp; 
+					<img src="{% static 'images/date.png' %}" width="16" height="16" align="absmiddle">{{unit.btime}}&nbsp;
+					{% if unit.bemail != "" %}
+					  <a href="mailto:{{unit.bemail}}" target="_blank">
+					  <img src="{% static 'images/email.png' %}" width="16" height="16" border="0" align="absmiddle"></a>
+           
+					{% endif %}
+          
+					&nbsp;
+           
+<p background="{% static 'images/g_r9_c3.png' %}"></p>
+<div class="separator"></div>
+            <hr>
+				  </p>
+				</div>
+			  </td>
+			</tr>
+			<tr>
+			  <td></td>
+			</tr>
+		  </table>
+		  <span class="functionDiv">
+		  </span>
+		</td>
+	</tr>
+  	{% empty %}
+		<tr>
+		  <td background="">
+			  <div class="messageDiv"><img src="{% static 'images/exclamation.png' %}" width="16" height="16" align="absmiddle"> 目前沒有新的資料，歡迎您留言。</div></td>
+		</tr>
+	{% endfor %}
+    <tr>
+			<td>  
+				<img src="{% static 'images/comment.png' %}" width="16" height="16" align="middle" /> <a href="/addpost/">我要留言</a> 
+			</td>
+		</tr>
+		<tr>
+			<td background="">
+			  <div class="pagebutton">
+			  {% if currentpage > 1 %}
+				   <a href="/showpost/prev/" title="上一頁">
+				  <img src="{% static 'images/prevpage.png' %}" alt="上一頁" width="64" height="24" /></a>
+			  {% endif %}
+			  {% if currentpage < totpage %}
+				  <a href="/showpost/next/" title="下一頁">
+				  <img src="{% static 'images/nextpage.png' %}" alt="下一頁" width="64" height="24" /></a>
+			  {% endif %}
+			  </div>
+			</td>
+		</tr>
+		<tr>
+			<td background=" ">
+		</tr>
+	</table>
+</div>
+{% endblock %}

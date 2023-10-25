@@ -1,0 +1,153 @@
+{% extends "base.html" %}sdgsweb.thinkchild.repl.co
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<!DOCTYPE html>
+<head>
+    <title>結果表格</title>
+</head>
+<body>
+  <label for="numberPicker">選擇一個數字:</label>
+  <input type="number" id="numberPicker" min="0" max="100" step="1">
+  <p id="selectedNumber"></p>
+
+  <script>
+      const numberPicker = document.getElementById("numberPicker");
+      const selectedNumber = document.getElementById("selectedNumber");
+
+      // 監聽input元素的值變化
+      numberPicker.addEventListener("input", function () {
+          const newValue = numberPicker.value;
+          selectedNumber.textContent = "選擇的數字: " + newValue;
+      });
+  </script>
+  
+  <p>选择数字并单击"添加到图表"按钮：</p>
+  <input type="number" id="numberPicker">
+  <button onclick="addToChart()">添加到图表</button>
+
+  <div style="max-width: 600px;">
+      <canvas id="barChart"></canvas>
+  </div>
+
+  <script>
+      var selectedNumbers = []; // 用于储存用户选择的数字的数组
+      var chart; // 用于储存Chart.js图表对象
+
+      function addToChart() {
+          var numberPicker = document.getElementById("numberPicker");
+          var selectedNumber = parseInt(numberPicker.value); // 获取NumberPicker的值并转换为整数
+
+          if (!isNaN(selectedNumber)) { // 确保输入的是有效数字
+              selectedNumbers.push(selectedNumber); // 将数字添加到数组
+              updateChart(); // 更新图表以显示选择的数字
+              numberPicker.value = ''; // 清除NumberPicker的值
+          }
+      }
+
+      function updateChart() {
+          var ctx = document.getElementById("barChart").getContext('2d');
+
+          if (chart) {
+              chart.destroy(); // 销毁之前的图表，以便更新
+          }
+
+          chart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: selectedNumbers.map(function(_, index) { return 'Number ' + (index + 1); }),
+                  datasets: [{
+                      label: '选择的数字',
+                      data: selectedNumbers,
+                      backgroundColor: 'rgba(75, 192, 192, 0.2)', // 柱子颜色
+                      borderColor: 'rgba(75, 192, 192, 1)', // 柱子边框颜色
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
+      }
+  </script>
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="myChart" width="400" height="200"></canvas>
+
+  
+<script>
+    // 获取canvas元素的上下文
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    // 定义数据
+    var data = {
+        labels: ['SDG01', 'SDG02','SDG03','SDG04','SDG05','SDG06', 'SDG07','SDG08','SDG09','SDG010','SDG11', 'SDG12','SDG13','SDG14','SDG15','SDG16',],
+        datasets: [{
+            label: '投資數量',
+            data: [12, 19, 3, 5, 2,0,12, 19, 3, 5, 2,0,12, 19, 3, 5, 2,0,1,], // 数据数组
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(153, 102, 255, 1)',
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // 配置图表选项
+    var options = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    // 创建图表
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+</script>
+  </body>
+{% endblock %}

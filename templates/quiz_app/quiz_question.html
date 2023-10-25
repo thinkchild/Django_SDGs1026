@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}開始答題吧！{% endblock %}
+{% block content %}
+{% load static %}
+<!-- 其他模板内容 -->
+ <!-- 这里是正确关闭的 endblock 标签 -->
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+
+<div id="content-sec3">
+  <img class="img-responsive" src="{% static 'images/DailyTasks.png' %}" />
+    <div id="content-sec3-adjust-title" style="position: absolute; top: 25%; left: 35%;">
+        <div class="container">
+            <h2 class="title">任務</h2>
+        </div>
+    </div>
+    <div id="content-sec3-adjust-question" style="position: absolute; top: 35%; left: 35%;">
+        <p class="one">{{ question.question }}</p>
+    </div>
+
+      <form method="post" >
+      {% csrf_token %}
+      <div id="content-sec3-adjust-options" style="position: absolute; top: 50%; left: 35%;">
+          <ul>
+              <li><input type="radio" name="user_answer" value="A"> {{ question.option_A }}</li>
+              <li><input type="radio" name="user_answer" value="B"> {{ question.option_B }}</li>
+              <li><input type="radio" name="user_answer" value="C"> {{ question.option_C }}</li>
+              <li><input type="radio" name="user_answer" value="D"> {{ question.option_D }}</li>
+          </ul>
+      </div>
+      <div class="container mt-5">
+              <div id="content-sec3-adjust-submit" style="position: absolute; top: 47%; left: 70%;">
+                  <div class="container">
+                      <button type="submit">提交</button>
+                  </div>
+              </div>
+      </div>
+      </form>
+  <div id="content-sec3-adjust-title" style="position: absolute; top: 62%; left: 68%;">
+      <div class="container">
+          <p class="two">國家能力+1</p>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

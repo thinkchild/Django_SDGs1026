@@ -1,0 +1,35 @@
+{% extends "base.html" %}sdgsweb.thinkchild.repl.co
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<head>
+  <title>User</title></head>
+<body>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% if stdsex_value == 'F' %}{% static 'images/stundent_girl.jpg' %}{% else %}{% static 'images/stundent_boy.jpg' %}{% endif %}" alt="User Image" style="width: 100%;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">用戶:{{ username }}</h5>
+          <p class="card-text">性別: {{ stdsex_value }}</p>
+        {% if cp_value %}
+          <p class="card-text">CP值: {{ cp_value }}</p>
+        {% else %}
+          <p class="card-text">没有CP值可顯示</p>
+        {% endif %}
+        {% if cv_value %}
+          <p class="card-text">CP值: {{ cv_value }}</p>
+        {% else %}
+          <p class="card-text">没有CV值可顯示</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+  
+</body>
+{% endblock %}

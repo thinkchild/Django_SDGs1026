@@ -1,0 +1,25 @@
+<!-- quiz_already_answered.html -->
+{% extends "base.html" %}
+{% block title %}Quiz Already Answered{% endblock %}
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+ <!--<h1 class="title">您已回答過此問題。</h1>-->
+<img src="{% static 'images/already_answered.png' %}" alt="已回答" />
+  <!--<div class="container mt-5">
+        <div id="content-sec3-adjust-submit" style="position: absolute; top: 70%; left: 70%;">
+            <div class="container">
+                <a href="{% url 'quiz_already_answered' %}" class="btn btn-primary">下一題</a>
+            </div>
+        </div>
+    </div>-->
+  <script>
+      // 使用 setTimeout 函数在页面加载后等待 3 秒
+      setTimeout(function() {
+          // 跳转到 hello.html
+        window.location.href = "https://sdgsweb.thinkchild.repl.co/hello";
+      }, 3000); // 3000 毫秒（即 3 秒）
+  </script>
+{% endblock %}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>討論專區</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .main-content {
+      flex: 2;
+    }
+    
+    .sidebar {
+      flex: 1;
+      margin-left: 20px;
+    }
+    
+    .post {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .post p {
+      margin: 0;
+    }
+    
+    .post-meta {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>討論專區</h1>
+  
+  <div class="container">
+    <div class="main-content">
+      <!-- 討論帖子列表 -->
+      <div class="post">
+        <h2>帖子標題</h2>
+        <p>帖子內容...</p>
+        <p class="post-meta">作者：John | 發布時間：2023-06-03 10:00:00</p>
+      </div>
+      
+      <div class="post">
+        <h2>另一個帖子標題</h2>
+        <p>帖子內容...</p>
+        <p class="post-meta">作者：Jane | 發布時間：2023-06-03 11:30:00</p>
+      </div>
+    </div>
+    
+    <div class="sidebar">
+      <!-- 側邊欄內容 -->
+      <h3>熱門話題</h3>
+      <ul>
+        <li>話題1</li>
+        <li>話題2</li>
+        <li>話題3</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer">
+    &copy; 2023 討論專區. All rights reserved.
+  </div>
+</body>
+</html>

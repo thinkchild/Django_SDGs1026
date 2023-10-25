@@ -1,0 +1,351 @@
+{% extends "base.html" %}sdgsweb.thinkchild.repl.co
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+<head>
+  <style>
+    .inline {
+      display: inline; /* 使用内联元素 */
+      margin: 10px; /* 调整对象之间的间距 */
+    }
+  </style>
+  <title>
+    SDG VOTE
+  </title>
+</head>
+<body>
+
+ <a href="/result01/"<p>投資結果查詢</p></a>
+
+
+  <div id="output">
+      <!-- Selected numbers will be displayed here -->
+  </div>
+
+  <script>
+      function recordNumber(numberId) {
+          var numberPicker = document.getElementById(numberId);
+          var selectedNumber = numberPicker.value;
+          var output = document.getElementById('output');
+          output.innerHTML += `你投資了 ${numberId}: ${selectedNumber}<br>`;
+      }
+  </script>
+
+
+  <p></p>
+  <p></p>
+<form method="post" >
+  {% csrf_token %}
+  <input type="hidden" name="vote" value="{{votetype}}">
+   <!--sdg01-->
+  <div id="column1" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+
+  <a href="https://globalgoals.tw/1-no-poverty"><img src="{% static 'images/sd1.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG01</h5>
+    <label for="number1">我要投資</label>
+    <div class="row">
+    <input type="number" id="number1" name="number1" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number1')" class="btn btn-success">投資</button>
+  </div>
+  </div>
+  </div>  
+  </div>
+   <!--sdg02--> 
+  <div id="column2" style="background-color:white;float:left;width:12.5%">
+   <div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/2-zero-hunger"><img src="{% static 'images/sd2.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG02</h5>
+    <label for="number2">我要投資</label>
+     <div class="row">
+    <input type="number" id="number2" name="number2" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number2')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+  </div>
+  </div>
+  <!--sdg03-->   
+  <div id="column3" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/3-good-health-and-well-being"><img src="{% static 'images/sd3.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG03</h5>
+    <label for="number3">我要投資</label>
+    <div class="row">
+    <input type="number" id="number3" name="number3" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number3')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>   
+    </div>
+  <!--sdg04--> 
+    <div id="column4" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/4-quality-education"><img src="{% static 'images/sd4.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG04</h5>
+    <label for="number4">我要投資</label>
+    <div class="row">
+    <input type="number" id="number4" name="number4" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number4')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+  </div>
+  </div>
+     <!--sdg05-->
+     <div id="column5" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+ <a href="https://globalgoals.tw/5-gender-equality"><img src="{% static 'images/sd5.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG05</h5>
+    <label for="number5">我要投資</label>
+    <div class="row">
+    <input type="number" id="number5" name="number5" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number5')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>  
+    </div>
+   <!--sdg06--> 
+    <div id="column6" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/6-clean-water-and-sanitation"><img src="{% static 'images/sd6.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG06</h5>
+    <label for="number6">我要投資</label>
+    <div class="row">
+    <input type="number" id="number6" name="number6" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number6')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>
+    </div>
+   <!--sdg07-->
+    <div id="column7" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/7-affordable-and-clean-energy"><img src="{% static 'images/sd7.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG07</h5>
+    <label for="number7">我要投資</label>
+    <div class="row">
+    <input type="number" id="number7" name="number7" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number7')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>   
+    </div>
+   <!--sdg08--> 
+    <div id="column8" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/8-decent-work-and-economic-growth"><img src="{% static 'images/sd8.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG08</h5>
+    <label for="number8">我要投資</label>
+    <div class="row">
+    <input type="number" id="number8" name="number8" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number8')" class="btn btn-success">投資</button>
+     </div>  
+  </div>
+</div>
+</div>
+   <!--sdg09-->
+  <div id="column1" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/9-industry-innovation-and-infrastructure"><img src="{% static 'images/sd9.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG09</h5>
+    <label for="number9">我要投資</label>
+    <div class="row">
+    <input type="number" id="number9" name="number9" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number9')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+  </div>  
+  </div>
+   <!--sdg10--> 
+  <div id="column2" style="background-color:white;float:left;width:12.5%">
+   <div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/10-reduced-inequalities"><img src="{% static 'images/sd10.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG10</h5>
+    <label for="number10">我要投資</label>
+    <div class="row">
+    <input type="number" id="number10" name="number10" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number10')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+  </div>
+  </div>
+  <!--sdg11-->   
+  <div id="column3" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/11-sustainable-cities-and-communities"><img src="{% static 'images/sd11.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG11</h5>
+    <label for="number11">我要投資</label>
+    <div class="row">
+    <input type="number" id="number11" name="number11" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number11')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>   
+    </div>
+  <!--sdg12--> 
+    <div id="column4"" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/12-responsible-consumption-and-production"><img src="{% static 'images/sd12.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG12</h5>
+    <label for="number12">我要投資</label>
+    <div class="row">
+    <input type="number" id="number12" name="number12" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number12')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+  </div>
+  </div>
+     <!--sdg13-->
+<div id="column5" style="background-color:white;float:left;width:12.5%">
+  <div class="card" style="width: 11rem;">
+ <a href="https://globalgoals.tw/13-climate-action"><img src="{% static 'images/sd13.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG13</h5>
+    <label for="number13">我要投資</label>
+    <div class="row">
+    <input type="number" id="number13" name="number13" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number13')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>  
+    </div>
+   <!--sdg14--> 
+    <div id="column6" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/14-life-below-water"><img src="{% static 'images/sd14.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG14</h5>
+    <label for="number4">我要投資</label>
+    <div class="row">
+    <input type="number" id="number14" name="number14" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number14')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>
+    </div>
+   <!--sdg15-->
+    <div id="column7" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/15-life-on-land"><img src="{% static 'images/sd15.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG15</h5>
+    <label for="number15">我要投資</label>
+    <div class="row">
+    <input type="number" id="number15" name="number15" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number15')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>   
+    </div>
+   <!--sdg16--> 
+    <div id="column8" style="background-color:white;float:left;width:12.5%">
+<div class="card" style="width: 11rem;">
+  <a href="https://globalgoals.tw/16-peace-justice-and-strong-institutions"><img src="{% static 'images/sd16.jpg' %}" class="card-img-top" align=center></a>
+  <div class="card-body">
+    <h5 class="card-title">SDG16</h5>
+    <label for="number16">我要投資</label>
+    <div class="row">
+    <input type="number" id="number16" name="number16" min="0" max="100" step="1" value="0">
+    <button onclick="recordNumber('number16')" class="btn btn-success">投資</button>
+     </div>
+  </div>
+</div>
+</div>
+<button type="submit" class="btn btn-success">投資</button>
+</form>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <canvas id="myChart" width="400" height="200"></canvas>
+
+
+  <script>
+      // 获取canvas元素的上下文
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      // 定义数据
+      var data = {
+          labels: ['SDG01', 'SDG02','SDG03','SDG04','SDG05','SDG06', 'SDG07','SDG08','SDG09','SDG010','SDG11', 'SDG12','SDG13','SDG14','SDG15','SDG16',],
+          datasets: [{
+              label: '投資數量',
+              data: [1, 19, 3, 5, 2,0,12, 19, 3, 5, 2,0,12, 19, 3, 5, 2,0,1,], // 数据数组
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+
+
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(153, 102, 255, 1)',
+              ],
+              borderWidth: 1
+          }]
+      };
+
+      // 配置图表选项
+      var options = {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      };
+
+      // 创建图表
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: data,
+          options: options
+      });
+  </script>
+
+</body>
+{% endblock %}

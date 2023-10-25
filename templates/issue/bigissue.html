@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}大事件{% endblock %}
+{% block content %}
+{% load static %}
+<!-- 將下面的代碼添加到模板中 -->
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<br>
+<br>
+<br>
+<br>
+<div id="content-sec3">
+
+<div id="content-sec3-adjust" style="position: absolute; top: 0%; left: 0%;">
+<div class="container">
+  <div class="row">
+    <div class="col">
+          <div id="content-sec3">
+            <img class="img-responsive" src="{% static 'images/bigissue_bg.png' %}"/>
+                <div id="content-sec3-adjust" style="position: absolute; top: 15%; left: 8%;">
+                      <p class="issueimage">
+                    <img class="img-responsive" src="{% static 'images/issue1.png' %}" width="50%"/>
+                      </p>
+                </div>
+                <div id="content-sec3-adjust" style="position: absolute; top: 35%; left: 32%;">
+                    <p class="issuetitle">澳洲大火 </p>
+                    <p class="issuecontent">澳洲東南部引起森林大火，總面積達 97,000平方公里 ，面積將近三個臺灣島...</p>
+                  <p class="issuecontent"><span class="badge bg-info text-dark">SDGs x15</span>
+                      <span class="badge bg-info text-dark">SDGs x15</span>
+                </div></p>
+
+                <div id="content-sec3-adjust" style="position: absolute; top: 73%; left: 39%;">
+                    <div class="container">
+                        <a href="/vote01/"<button type="submit" class="btn btn-link">投票</button></a>
+                    </div>
+                </div>
+
+          </div>
+    </div>
+  
+    <div class="col">
+      <div id="content-sec3">
+        <img class="img-responsive" src="{% static 'images/bigissue_bg.png' %}"/>
+            <div id="content-sec3-adjust" style="position: absolute; top: 10%; left: 8%;">
+                  <p class="issueimage">
+                <img class="img-responsive" src="{% static 'images/issue2.png' %}" width="50%"/>
+                  </p>
+            </div>
+            <div id="content-sec3-adjust" style="position: absolute; top: 35%; left: 32%;">
+                <p class="issuetitle">黎巴嫩經濟崩潰</p>
+                <p class="issuecontent">由於政府長期的腐敗、效率不彰，當地失業率居高不下，通貨膨脹嚴重...</p>
+              <p class="issuecontent"><span class="badge bg-info text-dark">SDGs x15</span>
+                    <span class="badge bg-info text-dark">SDGs x15</span>
+              </div></p>
+            </div>
+
+            <div id="content-sec3-adjust" style="position: absolute; top: 73%; left: 39%;">
+                <div class="container">
+                  <a href = "/vote02/"<button type="submit" class="btn btn-link">投票</button></a>
+                  
+                </div>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
